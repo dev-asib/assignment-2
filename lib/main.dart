@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ostad_assignment_2/src/view/home_screen.dart';
+import 'package:ostad_assignment_2/src/view/potrait_and_landscape_view.dart';
 
 void main(){
-  runApp(Assignment2());
+  runApp(const Assignment2());
 }
 
 class Assignment2 extends StatelessWidget {
@@ -12,10 +12,10 @@ class Assignment2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeActivity(),
+      home: const LandscapeAndPotraitMode(),
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.grey.shade50,
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white
         )
       ),

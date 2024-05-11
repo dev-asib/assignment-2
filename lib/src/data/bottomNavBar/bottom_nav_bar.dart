@@ -3,7 +3,7 @@ import 'package:ostad_assignment_2/src/data/bottomNavBar/checkout_button.dart';
 import 'package:ostad_assignment_2/src/data/bottomNavBar/total_amount.dart';
 
 
-SizedBox buildBottomNavigationBar({required totalAmount}) {
+SizedBox buildBottomNavigationBar({required totalAmount, required context, required itemCount}) {
   return SizedBox(
     height: 120,
     child: Padding(
@@ -12,7 +12,7 @@ SizedBox buildBottomNavigationBar({required totalAmount}) {
         children: [
           buildTotalAmount(totalAmount:totalAmount ),
           SizedBox(height: 10,),
-          buildCheckOutButton(),
+          buildCheckOutButton(context: context, itemCount:itemCount ),
         ],
       ),
     ),

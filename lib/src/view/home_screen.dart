@@ -23,165 +23,164 @@ class _HomeActivityState extends State<HomeActivity> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-      
-        appBar: buildAppBarWidget(),
+    return Scaffold(
 
-      
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14.0),
-          child: Column(
-            children: [
-              Expanded(
-                  child: ListView.separated(
-                    primary: false,
-                    shrinkWrap: true,
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      ProductDetails productDetails = ProductDetails();
-                      String productTitle = productDetails.prodcutData[index]['productTitle'];
-                      String productImage = productDetails.prodcutData[index]['productImage'];
-                      String productColor = productDetails.prodcutData[index]['productColor'];
-                      String productSize = productDetails.prodcutData[index]['productSize'];
+      appBar: buildAppBarWidget(),
 
-                      void increment(int index) {
-                        if (productQuantities[index] < 5) {
-                          productQuantities[index]++;
-                          productQuantities !=5;
-                          totalAmount = totalAmount + productPrices[index];
-                          setState(() {}); // Rebuild UI
-                        }
 
-                        if(productQuantities[index]==5){
-                          showDialog(context: context, builder: (context){
-                            return dialog(productTitle: productTitle, context: context);
-                          });
-                        }
 
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14.0),
+        child: Column(
+          children: [
+            Expanded(
+                child: ListView.separated(
+                  primary: false,
+                  shrinkWrap: true,
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    ProductDetails productDetails = ProductDetails();
+                    String productTitle = productDetails.prodcutData[index]['productTitle'];
+                    String productImage = productDetails.prodcutData[index]['productImage'];
+                    String productColor = productDetails.prodcutData[index]['productColor'];
+                    String productSize = productDetails.prodcutData[index]['productSize'];
+
+                    void increment(int index) {
+                      if (productQuantities[index] < 5) {
+                        productQuantities[index]++;
+                        productQuantities !=5;
+                        totalAmount = totalAmount + productPrices[index];
+                        setState(() {}); // Rebuild UI
                       }
 
-                      void decrement(int index) {
-                        if (productQuantities[index] > 0) {
-                          productQuantities[index]--;
-                          totalAmount = totalAmount - productPrices[index];
-                          setState(() {}); // Rebuild UI
-                        }
+                      if(productQuantities[index]==5){
+                        showDialog(context: context, builder: (context){
+                          return dialog(productTitle: productTitle, context: context);
+                        });
                       }
 
-                      return Container(
-                        height: 104,
-                        width: double.infinity,
-                        decoration: buildCartBoxDecorations(),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            buildCardImage(productImage),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                buildCartTtitle(productTitle),
-                                buildProductColorAndSize(productColor, productSize),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  children: [
-                                    Stack(
-                                      alignment: Alignment.center,
-                                      children: [
-                                        Container(
-                                          height: 36,
-                                          width: 36,
-                                          decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              shape: BoxShape.circle,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.grey.withOpacity(0.3),
-                                                    blurRadius: 5,
-                                                    spreadRadius: 1,
-                                                    offset: Offset(1, 2))
-                                              ]),
-                                        ),
-                                        IconButton(
-                                          onPressed: () {
-                                            decrement(index);
-                                          },
-                                          icon: Icon(
-                                            Icons.remove,
-                                            size: 25,
-                                            color: Colors.grey,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Container(
-                                      height: 36,
-                                      width: 36,
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        "${productQuantities[index]}",
-                                        style: TextStyle(
-                                            fontSize: 18, fontFamily: "metropolis.bold"),
+                    }
+
+                    void decrement(int index) {
+                      if (productQuantities[index] > 0) {
+                        productQuantities[index]--;
+                        totalAmount = totalAmount - productPrices[index];
+                        setState(() {}); // Rebuild UI
+                      }
+                    }
+
+                    return Container(
+                      height: 104,
+                      width: double.infinity,
+                      decoration: buildCartBoxDecorations(),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          buildCardImage(productImage),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              buildCartTtitle(productTitle),
+                              buildProductColorAndSize(productColor, productSize),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      Container(
+                                        height: 36,
+                                        width: 36,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            shape: BoxShape.circle,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.grey.withOpacity(0.3),
+                                                  blurRadius: 5,
+                                                  spreadRadius: 1,
+                                                  offset: Offset(1, 2))
+                                            ]),
                                       ),
-                                    ),
-                                    Stack(
-                                      alignment: Alignment.center,
-                                      children: [
-                                        Container(
-                                          height: 36,
-                                          width: 36,
-                                          decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              shape: BoxShape.circle,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.grey.withOpacity(0.3),
-                                                    blurRadius: 5,
-                                                    spreadRadius: 1,
-                                                    offset: Offset(1, 2))
-                                              ]),
+                                      IconButton(
+                                        onPressed: () {
+                                          decrement(index);
+                                        },
+                                        icon: Icon(
+                                          Icons.remove,
+                                          size: 25,
+                                          color: Colors.grey,
                                         ),
-                                        IconButton(
-                                          onPressed: () {
-                                            increment(index);
-                                          },
-                                          icon: Icon(
-                                            Icons.add,
-                                            size: 25,
-                                            color: Colors.grey,
-                                          ),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                            Spacer(),
-                            buildProductPriceAndMoreButton(productPrices[index]),
-                          ],
-                        ),
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return Divider(
-                        color: Colors.transparent,
-                      );
-                    },
-                  )
+                                      )
+                                    ],
+                                  ),
+                                  Container(
+                                    height: 36,
+                                    width: 36,
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "${productQuantities[index]}",
+                                      style: TextStyle(
+                                          fontSize: 18, fontFamily: "metropolis.bold"),
+                                    ),
+                                  ),
+                                  Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      Container(
+                                        height: 36,
+                                        width: 36,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            shape: BoxShape.circle,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.grey.withOpacity(0.3),
+                                                  blurRadius: 5,
+                                                  spreadRadius: 1,
+                                                  offset: Offset(1, 2))
+                                            ]),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {
+                                          increment(index);
+                                        },
+                                        icon: Icon(
+                                          Icons.add,
+                                          size: 25,
+                                          color: Colors.grey,
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                          Spacer(),
+                          buildProductPriceAndMoreButton(productPrices[index]),
+                        ],
+                      ),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return Divider(
+                      color: Colors.transparent,
+                    );
+                  },
+                )
 
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-        bottomNavigationBar: buildBottomNavigationBar(totalAmount: totalAmount),
       ),
+      bottomNavigationBar: buildBottomNavigationBar(totalAmount: totalAmount, context: context, itemCount: productQuantities),
     );
   }
 
