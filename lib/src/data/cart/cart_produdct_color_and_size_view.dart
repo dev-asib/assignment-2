@@ -3,6 +3,7 @@ import 'package:ostad_assignment_2/src/data/cart/product_color_or_size.dart';
 
 Row buildProductColorAndSize(productColor, productSize) {
   return Row(
+    mainAxisAlignment: MainAxisAlignment.start,
     children: [
       buildProductColorOrSize(productColor, "Color"),
       SizedBox(

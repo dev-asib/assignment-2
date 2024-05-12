@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ostad_assignment_2/src/view/potrait_and_landscape_view.dart';
+import 'package:device_preview/device_preview.dart';
 
 void main(){
-  runApp(const Assignment2());
+  runApp( 
+    DevicePreview(builder: (context)=>Assignment2())
+  );
 }
 
 class Assignment2 extends StatelessWidget {
@@ -10,15 +14,23 @@ class Assignment2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const LandscapeAndPotraitMode(),
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.grey.shade50,
-          appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.white
-        )
-      ),
+    return ScreenUtilInit(
+
+      designSize:  Size(360, 690),
+
+
+      builder: (_, child){
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home:  LandscapeAndPotraitMode(),
+          theme: ThemeData(
+              scaffoldBackgroundColor: Colors.grey.shade50,
+              appBarTheme:  AppBarTheme(
+                  backgroundColor: Colors.white
+              )
+          ),
+        );
+      },
     );
   }
 }

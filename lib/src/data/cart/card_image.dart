@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-Widget buildCardImage(productImage) {
+Widget buildCardImage({required productImage, required double imageWidth}) {
   return Container(
-    width: 104,
+    width: imageWidth,
     decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(8),

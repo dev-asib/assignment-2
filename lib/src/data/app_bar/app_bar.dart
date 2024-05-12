@@ -1,37 +1,44 @@
 import 'package:flutter/material.dart';
 
-PreferredSize buildAppBarWidget() {
+PreferredSize buildAppBarWidget({
+  required double preferedSizedFromHeight,
+  required double preferedSize,
+  required double myBagTextSize,
+  required double serachIconSize,
+  required context,
+}) {
   return PreferredSize(
-    preferredSize: Size.fromHeight(140),
+    preferredSize: Size.fromHeight(preferedSizedFromHeight),
     child: SizedBox(
-    height: 160,
-    child: Container(
-      color: Colors.white,
+      height: preferedSize,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Wrap(
           children: [
-            AppBar(
-              forceMaterialTransparency: true,
-              actions: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.search, size: 30,))
-              ],
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.search,
+                  size: serachIconSize,
+                ),
+              ),
             ),
             Text(
               textAlign: TextAlign.left,
               "My Bag",
               style: TextStyle(
-                  color: Color(
-                    0xff222222,
-                  ),
-                  fontSize: 34,
-                  fontFamily: "metropolis.bold"),
+                color: Color(
+                  0xff222222,
+                ),
+                fontSize: myBagTextSize,
+                fontFamily: "metropolis.bold",
+              ),
             )
           ],
         ),
       ),
     ),
-          ),
   );
 }

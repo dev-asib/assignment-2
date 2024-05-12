@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:ostad_assignment_2/src/data/congratulations_dialog/congratulations_message_middle_view.dart';
 import 'package:ostad_assignment_2/src/data/congratulations_dialog/congratulations_okay_button.dart';
 import 'package:ostad_assignment_2/src/data/congratulations_dialog/congratulations_text.dart';
+Widget dialog({required productTitle, required context, required double dialogHeight, required double dialogWidth }){
 
-Widget dialog({required productTitle, required context}){
+
+
   return Dialog(
     child: SizedBox(
-      height: 300,
+
+      // height: 300,
+
+      height: dialogHeight,
+      width: dialogWidth,
+
+
+
       child: Padding(
         padding: const EdgeInsets.only(
             left: 20, right: 20, bottom: 20, top: 40),
