@@ -303,7 +303,6 @@ class _HomeActivityState extends State<HomeActivity> {
                         Expanded(
                           child: Container(
                             width: cardImageWidth,
-                            color: Colors.blue,
                             child: buildCardImage(
                               productImage: productImage,
                               imageWidth: imageWidth,
